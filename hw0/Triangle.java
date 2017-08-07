@@ -3,13 +3,15 @@ public class Triangle
   { int size = 5;
     int row = 0;
     while (row <= size) 
-    { int col = 0;
+    { 
+      int col = 0;
       while (col < row)
-      { System.out.print('*');
+      { 
+        System.out.print('*');
         col = col + 1;
       }
-    System.out.println();
-    row = row + 1;
+      System.out.println();
+      row = row + 1;
     }
   }   
 }
