@@ -79,11 +79,36 @@ public class IntList {
      * *  elements of B.  May modify items of A. Don't use 'new'.
      */
 
-    public static IntList dcatenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+    public static IntList dcatenate(IntList A, IntList B)
+    {
+        if (A == null)
+        {
+            return B;
+        }
+        IntList pointer = A;
+        while (pointer.tail != null)
+            {
+                pointer = pointer.tail;
+            }
+        pointer.tail = B;
+        return A;
     }
 
+    // RECURSIVE VERSION
+
+    public static IntList dcatenateRecursive(IntList A, IntList B)
+    {
+        if (A == null)
+        {
+            return B;
+        }
+        else
+        {
+            A.tail = dcatenateRecursive(A.tail, B);
+            return B;
+        }
+
+    }
     /**
      * Returns a list consisting of the elements of A followed by the
      * * elements of B.  May NOT modify items of A.  Use 'new'.
