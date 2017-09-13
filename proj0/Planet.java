@@ -8,20 +8,19 @@ public class Planet
     String imgFileName;
 
     //first constructor
-    public Planet(double xP, double yP, double xV,
-                  double yV, double m, String img)
+    public Planet(double xxPos, double yyPos, double xxVel,
+                  double yyVel, double mass, String imgFileName)
     {
-        xxPos = xP;
-        yyPos = yP;
-        xxVel = xV;
-        yyVel = yV;
-        mass = m;
-        imgFileName = img;
+        this.xxPos = xxPos;
+        this.yyPos = yyPos;
+        this.xxVel = xxVel;
+        this.yyVel = yyVel;
+        this.mass = mass;
+        this.imgFileName = imgFileName;
 
     }
     //second constructor: should take in a Planet object and initialize an identical Planet object
-    public Planet(Planet p)
-    {
+    public Planet(Planet p) //p can be replaced with any name for Planet object
         this.xxPos = p.xxPos;
         this.yyPos = p.yyPos;
         this.xxVel = p.xxVel;
@@ -30,5 +29,17 @@ public class Planet
         this.imgFileName = p.imgFileName;
 
     }
+	public double calcDistance(Planet other)
+	{
+		double distance; //r = distance
+		double rSquared;
+		double dxSquared;
+		double dySquared;
+		dxSquared = (this.xxPos - other.xxPos) * (this.xxPos - other.xxPos);
+		dySquared = (this.yyPos - other.yyPos) * (this.yyPos - other.yyPos);
+		rSquared = dxSquared + dySquared;
+		distance = Math.sqrt(rSquared);
+		return distance;
+	}
 
 }
