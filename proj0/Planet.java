@@ -31,7 +31,9 @@ public class Planet
 
     }
 	public double calcDistance(Planet other)
-	{
+	{ 
+    /*This method will take in a single Planet and should return a double equal to the distance between the supplied planet and the planet that is doing the calculation
+    */
 		double distance; //r = distance
 		double rSquared;
 		double dxSquared;
@@ -42,5 +44,19 @@ public class Planet
 		distance = Math.sqrt(rSquared);
 		return distance;
 	}
-
+    
+    public double calcForceExertedBy(Planet exertingPlanet)
+    {
+    /* This method takes in a planet (what's doing the exertion) and returns a double describing the force exerted on this planet by the given planet. Call the calcDistance method here. */
+    double graviationalConstant =  0.0000000000667;
+    double mass1 = this.mass;
+    double mass2 = exertingPlanet.mass;
+    double distance = calcDistance(exertingPlanet);
+    double distanceSquared = distance * distance;
+    double force;
+    force = (graviationalConstant * mass1 * mass2) / distanceSquared;
+    return force;
+    
+    }
+    
 }
