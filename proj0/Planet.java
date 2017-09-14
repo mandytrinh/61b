@@ -21,6 +21,7 @@ public class Planet
     }
     //second constructor: should take in a Planet object and initialize an identical Planet object
     public Planet(Planet p) //p can be replaced with any name for Planet object
+    {
         this.xxPos = p.xxPos;
         this.yyPos = p.yyPos;
         this.xxVel = p.xxVel;
