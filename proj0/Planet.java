@@ -30,7 +30,7 @@ public class Planet
         this.imgFileName = p.imgFileName;
 
     }
-	public double calcDistance(Planet other)
+	public double calcDistance(Planet exertingPlanet)
 	{ 
     /*This method will take in a single Planet and should return a double equal to the distance between the supplied planet and the planet that is doing the calculation
     */
@@ -38,8 +38,8 @@ public class Planet
 		double rSquared;
 		double dxSquared;
 		double dySquared;
-		dxSquared = (this.xxPos - other.xxPos) * (this.xxPos - other.xxPos);
-		dySquared = (this.yyPos - other.yyPos) * (this.yyPos - other.yyPos);
+		dxSquared = (exertingPlanet.xxPos - this.xxPos) * (exertingPlanet.xxPos - this.xxPos);
+		dySquared = (exertingPlanet.yyPos - this.yyPos) * (exertingPlanet.yyPos - this.yyPos);
 		rSquared = dxSquared + dySquared;
 		distance = Math.sqrt(rSquared);
 		return distance;
@@ -47,7 +47,7 @@ public class Planet
     
     public double calcForceExertedBy(Planet exertingPlanet)
     {
-    /* This method takes in a planet (what's doing the exertion) and returns a double describing the force exerted on this planet by the given planet. Call the calcDistance method here. */
+    /* Pairwise force: This method takes in a planet (what's doing the exertion) and returns a double describing the force exerted on this planet by the given planet. Call the calcDistance method here. */
     double graviationalConstant =  0.0000000000667;
     double mass1 = this.mass;
     double mass2 = exertingPlanet.mass;
@@ -57,6 +57,17 @@ public class Planet
     force = (graviationalConstant * mass1 * mass2) / distanceSquared;
     return force;
     
+    }
+    
+    public double calcForceExertedByX(Planet exertingPlanet)
+    {// describes the force exerted in the X direction
+        double force = calcForceExertedBy(Planet exertingPlanet);
+        double distance = calcDistance(exertingPlanet);
+        double dx = (exertingPlanet.xxPos - this.xxPos);
+        double force_X;
+        force_X = (force * dx) / distance;
+        return force_X;
+        
     }
     
 }
