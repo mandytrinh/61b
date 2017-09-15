@@ -61,13 +61,22 @@ public class Planet
     
     public double calcForceExertedByX(Planet exertingPlanet)
     {// describes the force exerted in the X direction
-        double force = calcForceExertedBy(Planet exertingPlanet);
+        double force = calcForceExertedBy(exertingPlanet);
         double distance = calcDistance(exertingPlanet);
-        double dx = (exertingPlanet.xxPos - this.xxPos);
+        double dx = exertingPlanet.xxPos - this.xxPos;
         double force_X;
         force_X = (force * dx) / distance;
         return force_X;
         
+    }
+    public double calcForceExertedByY(Planet exertingPlanet)
+    {
+        double force = calcForceExertedBy(exertingPlanet);
+        double distance = calcDistance(exertingPlanet);
+        double dy = exertingPlanet.yyPos - this.yyPos;
+        double force_Y;
+        force_Y = (force * dy) / distance;
+        return force_Y;
     }
     
 }
