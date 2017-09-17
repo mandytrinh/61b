@@ -138,8 +138,8 @@ public class Planet
         
         /* 3) Calculate the new position by using the velocity computed in step 2 
         and the current position. The new position is (px + dt * vx, py + dt * vy) */
-        this.xxPos = this.xxPos + dt * this.xNewVelocity;
-        this.yyPos = this.yyPos + dt * this.yNewVelocity;
+        this.xxPos = this.xxPos + dt * this.xxVel;
+        this.yyPos = this.yyPos + dt * this.yyVel;
         
     }
     
