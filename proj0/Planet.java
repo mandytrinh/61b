@@ -80,12 +80,12 @@ public class Planet
     
     public double calcNetForceExertedByX(Planet[] allExertingPlanets)
     { 
-    /* NET X FORCE: This method take in an array of Planets and calculate the net X force exerted by all planets in that array upon the current Planet */
+    /* NET X FORCE: This method takes in an array of Planets and calculates the net X force exerted by all planets in that array upon the current Planet */
         double force_X = 0;
         double netX = 0;
         for (Planet currentPlanet : allExertingPlanets)
         {
-            if (!equals(currentPlanet))
+            if (!this.equals(currentPlanet))
             {
                 force_X = calcForceExertedByX(currentPlanet);
                 netX = netX + force_X; 
@@ -96,18 +96,20 @@ public class Planet
     
     public double calcNetForceExertedByY(Planet[] allExertingPlanets)
     { 
-    /* NET Y FORCE: This method take in an array of Planets and calculate the net Y force exerted by all planets in that array upon the current Planet */
+    /* NET Y FORCE: This method takes in an array of Planets and calculates the net Y force exerted by all planets in that array upon the current Planet */
         double force_Y = 0;
         double netY = 0;
         for (Planet currentPlanet : allExertingPlanets)
         {
-            if (!equals(currentPlanet))
+            if (!this.equals(currentPlanet))
             {
                 force_Y = calcForceExertedByY(currentPlanet);
                 netY = netY + force_Y; 
             }
         }
         return netY; 
-    }  
+    }
+
+    
     
 }
