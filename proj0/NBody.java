@@ -8,6 +8,7 @@ public class NBody
 
     public static double readRadius(String fileName)
     { /*  Given a file name, it should return a double corresponding to the radius of the universe in that file 
+    
     Note - This is a CLASS method (static)
     It is not invoked on an instant but on the class itself */
     
