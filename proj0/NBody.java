@@ -22,7 +22,7 @@ public class NBody
         return radius;        
     }
     
-    public static double readPlanets(String fileName)
+    public static Planet[] readPlanets(String fileName)
     { /* Given a file name, it should return an array of Planets corresponding to the planets in the file */
     
         In in = new In(fileName);
@@ -38,18 +38,16 @@ public class NBody
         int i = 0;
         while (i < numOfPlanets)
         {
-            // read xvel, yvel, xpos, ypos, mass, name
-            Planet p = new Planet(double xPos, double yPos, double xVel, double yVel, double mass, String planetName);
-            planetsArray[i] = p;
+            xPos = in.readDouble();
+            yPos = in.readDouble();
+            xVel = in.readDouble();
+            yVel = in.readDouble();
+            mass = in.readDouble();
+            planetName = in.readString();            
+            Planet p = new Planet(xPos, yPos, xVel, yVel, mass, planetName);
+            planetsArray[i] = p; //add planet to array
             i = i + 1;
-            xPos = in.readDouble;
-            yPos = in.readDouble;
-            xVel = in.readDouble;
-            yVel = in.readDouble;
-            mass = in.readDouble;
-            planetName = in.readString;            
         }
-        
-        
+        return planetsArray;       
     }
 }
