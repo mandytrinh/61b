@@ -1,4 +1,5 @@
-/* This class will have NO constructor. 
+/* This cl
+ass will have NO constructor. 
     The goal of this class is to simulate a universe specified in one of the data files */
     
 import java.util.Scanner;
@@ -18,6 +19,11 @@ public class NBody
         double yCord = 0;
         //Draws the specified image centered at (x, y)
         StdDraw.picture(xCord, yCord, imageToDraw);
+        //Drawing All of the Planets by calling draw method from Planet.java
+        for (Planet currentPlanet:planetsArray)
+        {
+            currentPlanet.draw();
+        }
     }
     public static double readRadius(String fileName)
     { /*  Given a file name, it should return a double corresponding to the radius of the universe in that file 
