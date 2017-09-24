@@ -11,18 +11,37 @@ public class NBody
         double T = Double.parseDouble(args[0]);
         double dt = Double.parseDouble(args[1]);
         String filename = args[2];
+        In in = new In(filename);
+        int numOfPlanets = in.readInt();
         double radius = readRadius(filename);
         Planet[] planetsArray = readPlanets(filename); 
         StdDraw.setScale(-radius, radius);
-        String imageToDraw = "./images/starfield.jpg";
+        String bgImage = "./images/starfield.jpg";
         double xCord = 0;
-        double yCord = 0;
-        //Draws the specified image centered at (x, y)
-        StdDraw.picture(xCord, yCord, imageToDraw);
-        //Drawing All of the Planets by calling draw method from Planet.java
-        for (Planet currentPlanet:planetsArray)
+        double yCord = 0;       
+        double currentTime = 0;
+        // new arrays for X & Y forces with size as #s of planets
+        double[] xForces = new double[numOfPlanets]; 
+        double[] yForces = new double[numOfPlanets];
+        while (currentTime < T)
         {
-            currentPlanet.draw();
+            int i = 0;
+            for (Planet currentPlanet: planetsArray)
+            {
+                xForces[i] = currentPlanet.calcNetForceExertedByX(planetsArray);
+                yForces[i] = currentPlanet.calcNetForceExertedByY(planetsArray);
+                i = i + 1;               
+            }
+            //reset i back to 0 to loop thru planetsArray again in UPDATE method
+            i = 0; 
+            StdDraw.picture(xCord, yCord, bgImage);
+            for (Planet currentPlanet:planetsArray)
+                {                    
+                    currentPlanet.update(dt, xForces[i], yForces[i]);currentPlanet.draw();
+                    i = i + 1;                   
+                }
+            StdDraw.show(10);
+            currentTime = currentTime + dt;
         }
     }
     public static double readRadius(String fileName)
