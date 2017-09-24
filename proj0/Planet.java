@@ -143,4 +143,10 @@ public class Planet
         
     }
     
+    public void draw()
+    {
+        /*uses the StdDraw API to draw the Planet's img at the Planet's position; should return nothing and take in no parameters.*/
+        StdDraw.picture(xxPos, yyPos, "./images/" + imgFileName);
+    }
+    
 }
