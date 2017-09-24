@@ -11,13 +11,13 @@ public class NBody
         double dt = Double.parseDouble(args[1]);
         String filename = args[2];
         double radius = readRadius(filename);
-        Planets[] planetsArray = readPlanets(filename); 
-        double scale = StdDraw.setScale(-radius, radius);
-        String imageToDraw = ".\images\starfield.jpg";
+        Planet[] planetsArray = readPlanets(filename); 
+        StdDraw.setScale(-radius, radius);
+        String imageToDraw = "./images/starfield.jpg";
         double xCord = 0;
         double yCord = 0;
         //Draws the specified image centered at (x, y)
-        StdDraw.picture(x, y, imageToDraw);
+        StdDraw.picture(xCord, yCord, imageToDraw);
     }
     public static double readRadius(String fileName)
     { /*  Given a file name, it should return a double corresponding to the radius of the universe in that file 
