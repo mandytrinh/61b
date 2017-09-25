@@ -43,6 +43,14 @@ public class NBody
             StdDraw.show(10);
             currentTime = currentTime + dt;
         }
+        
+        StdOut.printf("%d\n", planetsArray.length);
+        StdOut.printf("%.2e\n", radius);
+        for (int i = 0; i < planetsArray.length; i++) 
+        {
+        StdOut.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %12s\n",
+            planetsArray[i].xxPos, planetsArray[i].yyPos, planetsArray[i].xxVel, planetsArray[i].yyVel, planetsArray[i].mass, planetsArray[i].imgFileName);	
+        }	
     }
     public static double readRadius(String fileName)
     { /*  Given a file name, it should return a double corresponding to the radius of the universe in that file 
