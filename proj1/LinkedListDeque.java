@@ -22,7 +22,18 @@ public class LinkedListDeque<genericType>
         sentinel = new Node(sentinel, null, sentinel); 
         //empty list w/ sentinel node that points at itself; previous is itself; next is itself
     }
-    
+
+    public boolean isEmpty()
+    {
+        if (size == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     public int size()
     {
         return size;
@@ -31,7 +42,7 @@ public class LinkedListDeque<genericType>
     public void addFirst(genericType x)
     { /*  Adds an item to the front of the Deque.
         Must not involve any looping or recursion & take constant time */
-        if (size == 0)
+        if (this.isEmpty())
         {
             Node newFirst = new Node(sentinel, x, sentinel);
             sentinel.prev = newFirst;
@@ -48,7 +59,7 @@ public class LinkedListDeque<genericType>
 
     public void addLast(genericType x)
     {
-        if (size == 0)
+        if (this.isEmpty())
         {
             Node newLast = new Node(sentinel, x, sentinel);
             sentinel.next = newLast;
