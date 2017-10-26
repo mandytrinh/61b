@@ -42,6 +42,7 @@ public class LinkedListDeque<genericType>
     public void addFirst(genericType x)
     { /*  Adds an item to the front of the Deque.
         Must not involve any looping or recursion & take constant time */
+
         if (this.isEmpty())
         {
             Node newFirst = new Node(sentinel, x, sentinel);
@@ -58,7 +59,7 @@ public class LinkedListDeque<genericType>
     }
 
     public void addLast(genericType x)
-    {
+    { // Adds an item to the back of the Deque; must not involve any looping or recursion
         if (this.isEmpty())
         {
             Node newLast = new Node(sentinel, x, sentinel);
@@ -72,5 +73,17 @@ public class LinkedListDeque<genericType>
         }
         sentinel.prev = newLast;
         size += 1;
+    }
+
+
+    public void printDeque()
+    { // Prints the items in the Deque from first to last, separated by a space
+        Node p = sentinel.next;
+        while (p != null)
+        {
+            System.out.print(p.item + " ");
+            p = p.next;
+        }
+
     }
 }
