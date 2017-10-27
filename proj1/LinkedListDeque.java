@@ -88,7 +88,7 @@ public class LinkedListDeque<genericType>
          {
              return null;
          }
-         firstNode = sentinel.next;
+         Node firstNode = sentinel.next;
          genericType itemInFirstNode = firstNode.item;
 
          secondNode = firstNode.next;
@@ -99,6 +99,27 @@ public class LinkedListDeque<genericType>
          firstNode = null; // destroy reference for garbage collection
          return itemInFirstNode;
      }
+
+     /* Removes and returns the item at the back of the Deque.
+        If no such item exists, returns null. */
+
+    public Item removeLast()
+    {
+        if (isEmpty())
+        {
+            return null;
+        }
+        Node lastNode = sentinel.prev;
+        genericType itemInLastNode = lastNode.item;
+
+        secondToLastNode = lastNode.prev;
+        sentinel.prev = secondToLastNode;
+        secondToLastNode.next = sentinel;
+
+        size = size - 1;
+        lastNode = null;
+        return itemInLastNode;
+    }
 
     // Prints the items in the Deque from first to last, separated by a space
     public void printDeque()
