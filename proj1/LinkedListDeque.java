@@ -101,7 +101,8 @@ public class LinkedListDeque<genericType>
      }
 
      /* Removes and returns the item at the back of the Deque.
-        If no such item exists, returns null. */
+        If no such item exists, returns null.
+        This is the mirror of the removeFirst method */
 
     public Item removeLast()
     {
