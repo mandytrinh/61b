@@ -150,6 +150,25 @@ public class LinkedListDeque<genericType>
         }
         return null;
     }
+
+    private genericType recursiveHelper(int index, Node node)
+    {
+        if (index == 0)
+        {
+            return node.item;
+        }
+        return recursiveHelper(index - 1, node.next);
+    }
+
+    public genericType getRecursive(int index)
+    {
+        if (isEmpty() || index >= size)
+        {
+            return null;
+        }
+        Node firstNode = sentinel.next;
+        return recursiveHelper(index, firstNode);
+    }
     // Prints the items in the Deque from first to last, separated by a space
     public void printDeque()
     {
