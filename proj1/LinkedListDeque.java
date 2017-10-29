@@ -2,6 +2,7 @@ public class LinkedListDeque<genericType>
 {
     public class Node
     {
+        public Node prev;
         public genericType item;
         public Node next;
 
@@ -127,16 +128,36 @@ public class LinkedListDeque<genericType>
      */
     public genericType get(int index)
     {
-
+        if (isEmpty())
+        {
+            return null;
+        }
+        if (size == 1 && index == 0)
+        {
+            Node onlyNode = sentinel.next;
+            return onlyNode.item;
+        }
+        if (index > 0)
+        {
+            int counter = 0;
+            Node currentNode = sentinel.next;
+            while (index > counter)
+            {
+                currentNode = currentNode.next;
+                counter = counter + 1;
+            }
+            return currentNode.item;
+        }
+        return null;
     }
     // Prints the items in the Deque from first to last, separated by a space
     public void printDeque()
     {
-        Node p = sentinel.next;
-        while (p != sentinel)
+        Node currentNode = sentinel.next;
+        while (currentNode != sentinel)
         {
-            System.out.print(p.item + " ");
-            p = p.next;
+            System.out.print(currentNode.item + " ");
+            currentNode = currentNode.next;
         }
 
     }
