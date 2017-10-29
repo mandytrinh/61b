@@ -82,7 +82,7 @@ public class LinkedListDeque<genericType>
     /* Removes and returns the item at the front of the Deque.
         If no such item exists, returns null.*/
 
-     public Item removeFirst()
+     public genericType removeFirst()
      {
          if (isEmpty())
          {
@@ -104,7 +104,7 @@ public class LinkedListDeque<genericType>
         If no such item exists, returns null.
         This is the mirror of the removeFirst method */
 
-    public Item removeLast()
+    public genericType removeLast()
     {
         if (isEmpty())
         {
@@ -122,6 +122,13 @@ public class LinkedListDeque<genericType>
         return itemInLastNode;
     }
 
+    /* Gets the item at the given index, where 0 is the front, 1 is the next item, and so forth. If no such item exists, returns null.
+     Must be non destructive: i.e not alter the deque!
+     */
+    public genericType get(int index)
+    {
+
+    }
     // Prints the items in the Deque from first to last, separated by a space
     public void printDeque()
     {
