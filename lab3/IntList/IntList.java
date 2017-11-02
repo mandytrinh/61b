@@ -94,7 +94,7 @@ public class IntList {
         return A;
     }
 
-    // RECURSIVE VERSION - fixed!
+    // RECURSIVE VERSION
 
     public static IntList dcatenateRecursive(IntList A, IntList B)
     {
