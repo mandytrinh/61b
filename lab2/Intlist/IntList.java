@@ -105,7 +105,7 @@ public class IntList {
         else
         {
             A.tail = dcatenateRecursive(A.tail, B);
-            return B;
+            return A;
         }
 
     }
