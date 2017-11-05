@@ -92,7 +92,7 @@ public class LinkedListDeque<genericType>
          Node firstNode = sentinel.next;
          genericType itemInFirstNode = firstNode.item;
 
-         secondNode = firstNode.next;
+         Node secondNode = firstNode.next;
          sentinel.next = secondNode; //breaks link to 1st node & make sentinel points to 2nd node
          secondNode.prev = sentinel; //balance & make the 2nd's (new 1st's) prev point to sentinel
 
@@ -114,7 +114,7 @@ public class LinkedListDeque<genericType>
         Node lastNode = sentinel.prev;
         genericType itemInLastNode = lastNode.item;
 
-        secondToLastNode = lastNode.prev;
+        Node secondToLastNode = lastNode.prev;
         sentinel.prev = secondToLastNode;
         secondToLastNode.next = sentinel;
 
