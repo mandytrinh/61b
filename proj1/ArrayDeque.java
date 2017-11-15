@@ -21,7 +21,7 @@ public class ArrayDeque<genericType>
 
     private boolean arrayIsFull()
     {
-        if (this.size == this.capacity)
+        if (size == capacity)
         {
             return true;
         }
@@ -30,12 +30,23 @@ public class ArrayDeque<genericType>
 
     public int size()
     {
-        return this.size;
+        return size;
     }
 
     public boolean isEmpty()
     {
-        return this.size == 0;
+        return size == 0;
+    }
+
+    private void resize(int newCapacity)
+    {
+        genericType[] newArray = (genericType[]) new Object[newCapacity];
+
+        System.arraycopy(items, 0, newArray, 0, size);
+    }
+    public void addFirst(genericType item)
+    {
+
     }
 
 }
