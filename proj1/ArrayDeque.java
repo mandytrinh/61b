@@ -5,8 +5,8 @@ public class ArrayDeque<genericType>
     private int capacity; //how many memory boxes reserved
     private int frontPointer;
     private int backPointer;
-    private int resizeFactor = 2;   // Resize factor to multiply when resizing arrays
-    private double usageRatio = 0.25; //R = size/items.length
+    private int resizeFactor = 2;   // factor to multiply when resizing arrays
+    private double usageRatio = 0.25; // R = size/items.length
 
     // Initializes empty array deque with starting capacity 8
 
@@ -21,11 +21,7 @@ public class ArrayDeque<genericType>
 
     private boolean arrayIsFull()
     {
-        if (size == capacity)
-        {
-            return true;
-        }
-        return false;
+        return size == capacity;
     }
 
     public int size()
@@ -41,12 +37,26 @@ public class ArrayDeque<genericType>
     private void resize(int newCapacity)
     {
         genericType[] newArray = (genericType[]) new Object[newCapacity];
-
-        System.arraycopy(items, 0, newArray, 0, size);
+        int startIndex = frontPointer + 1;
+        int firstLength = size - startIndex;
+        System.arraycopy(items, startIndex, newArray, 1, firstLength);
+        int secondLength = backPointer;
+        System.arraycopy(items, 0, newArray, firstLength + 1, secondLength);
+        items = newArray;
+        capacity = newCapacity;
+        frontPointer = 0;
+        backPointer = size + 1;
     }
-    public void addFirst(genericType item)
+    public void addFirst(genericType x)
     {
-
+        if (arrayIsFull())
+        { //'resize' by making a new array with a new capacity
+            int newCapacity = capacity * resizeFactor;
+            resize(newCapacity);
+        }
+        items[frontPointer] = x;
+        frontPointer = frontPointer - 1;
+        size += 1;
     }
 
 }
