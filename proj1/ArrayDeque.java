@@ -76,4 +76,18 @@ public class ArrayDeque<genericType>
 
     }
 
+    public genericType get(int index)
+    {
+        //Gets the item at the given index, where 0 is the front, 1 is the next item etc.
+        // If no such item exists, returns null.
+        if (index >= size)
+        {
+            return null;
+        }
+        else
+        {
+            int realIndex = (index + frontPointer + 1) % capacity;
+            return items[realIndex];
+        }
+    }
 }
