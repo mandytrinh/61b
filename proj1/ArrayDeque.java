@@ -90,4 +90,24 @@ public class ArrayDeque<genericType>
             return items[realIndex];
         }
     }
+
+    private void set(int index, genericType x)
+    {
+        int realIndex = (index + frontPointer + 1) % capacity;
+        items[realIndex] = x;
+    }
+
+    public genericType removeFirst()
+    {
+        // Removes & returns the item at the front of Deque. If no such item exists, returns null.
+        if (isEmpty())
+        {
+            return null;
+        }
+        genericType firstItem = get(0); //get item at index 0
+        set(0, null); // nulls out item at 0th index
+        frontPointer = frontPointer + 1;
+        size -= 1;
+        return firstItem;
+    }
 }
