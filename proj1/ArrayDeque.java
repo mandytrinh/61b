@@ -38,10 +38,14 @@ public class ArrayDeque<genericType>
     {
         genericType[] newArray = (genericType[]) new Object[newCapacity];
         int startIndex = frontPointer + 1;
-        int firstLength = size - startIndex;
+        int firstLength = size - startIndex; //from 1 to end
+
         System.arraycopy(items, startIndex, newArray, 1, firstLength);
+
         int secondLength = backPointer;
         System.arraycopy(items, 0, newArray, firstLength + 1, secondLength);
+        // get from 0 to 1
+
         items = newArray;
         capacity = newCapacity;
         frontPointer = 0;
@@ -57,6 +61,19 @@ public class ArrayDeque<genericType>
         items[frontPointer] = x;
         frontPointer = frontPointer - 1;
         size += 1;
+    }
+
+    public void addLast(genericType x)
+    {
+        if (arrayIsFull())
+        {
+            int newCapacity = capacity * resizeFactor;
+            resize(newCapacity);
+        }
+        items[backPointer] = x;
+        backPointer = backPointer + 1;
+        size += 1;
+
     }
 
 }
