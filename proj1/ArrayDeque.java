@@ -123,5 +123,5 @@ public class ArrayDeque<genericType>
         size -= 1;
 		maintainUsageFactor();
         return firstItem;
-    }
+    } 
 }
