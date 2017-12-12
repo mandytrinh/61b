@@ -1,7 +1,7 @@
 public class ArrayDeque<genericType>
 {
     private genericType[] items;
-    private double size; // #s of elements in deque
+    private int size; // #s of elements in deque
     private int capacity; //how many memory boxes reserved
     private int frontPointer;
     private int backPointer;
@@ -38,16 +38,16 @@ public class ArrayDeque<genericType>
 	{
 		if (capacity >= capacity * 2)
 		{
-			double usageFactor = size/capacity;
-			if (usageFactor < 0.25)
+			double usageFactor = (size + 0.0)/capacity;
+			if (usageFactor < usageRatio)
 			{
 				int newCapacity = capacity / resizeFactor;
-				resize(newCapacity);
+				resizeUp(newCapacity);
 			}
 		}
 	}
 	
-    private void resize(int newCapacity)
+    private void resizeUp(int newCapacity)
     {
         genericType[] newArray = (genericType[]) new Object[newCapacity];
         int startIndex = frontPointer + 1;
@@ -69,7 +69,7 @@ public class ArrayDeque<genericType>
         if (arrayIsFull())
         { //'resize' by making a new array with a new capacity
             int newCapacity = capacity * resizeFactor;
-            resize(newCapacity);
+            resizeUp(newCapacity);
         }
         items[frontPointer] = x;
         frontPointer = frontPointer - 1;
@@ -81,7 +81,7 @@ public class ArrayDeque<genericType>
         if (arrayIsFull())
         {
             int newCapacity = capacity * resizeFactor;
-            resize(newCapacity);
+            resizeUp(newCapacity);
         }
         items[backPointer] = x;
         backPointer = backPointer + 1;
@@ -123,5 +123,5 @@ public class ArrayDeque<genericType>
         size -= 1;
 		maintainUsageFactor();
         return firstItem;
-    }  
+    }
 }
