@@ -42,10 +42,21 @@ public class ArrayDeque<genericType>
 			if (usageFactor < usageRatio)
 			{
 				int newCapacity = capacity / resizeFactor;
-				resizeUp(newCapacity);
+				resizeDown(newCapacity);
 			}
 		}
 	}
+
+	private void resizeDown(int newCapacity)
+    {
+        genericType[] newArray = (genericType[]) new Object[newCapacity];
+        System.arraycopy(items, 1, newArray, 1, size);
+        items = newArray;
+        capacity = newCapacity;
+        frontPointer = 0;
+        backPointer = size + 1;
+
+    }
 	
     private void resizeUp(int newCapacity)
     {
