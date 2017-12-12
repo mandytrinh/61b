@@ -36,12 +36,12 @@ public class ArrayDeque<genericType>
 
 	public void maintainUsageFactor()
 	{
-		if (capacity >= capacity * 2)
+		if (capacity >= 16)
 		{
-			double usageFactor = (size + 0.0)/capacity;
-			if (usageFactor < usageRatio)
+			double usageFactor = (size + 0.0)/capacity; // implicit casting to a double
+			if (usageFactor < usageRatio) //usageRatio is 0.25
 			{
-				int newCapacity = capacity / resizeFactor;
+				int newCapacity = capacity / resizeFactor; // when we fall below that, half the capacity (aka length) by 2 (aka resizefactor)
 				resizeDown(newCapacity);
 			}
 		}
@@ -111,7 +111,7 @@ public class ArrayDeque<genericType>
         else
         {
             int realIndex = (index + frontPointer + 1) % capacity;
-            return items[realIndex];
+            return items[realIndex]; //return corresponding item at the given index
         }
     }
 
