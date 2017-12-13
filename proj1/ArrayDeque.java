@@ -135,4 +135,20 @@ public class ArrayDeque<genericType>
 		maintainUsageFactor();
         return firstItem;
     }
+
+    public genericType removeLast()
+    {
+        // Removes & returns the item at the back of Deque. If no such item exists, returns null.
+        if (isEmpty())
+        {
+            return null;
+        }
+        genericType lastItem = get(size - 1);
+        set(size - 1, null);
+        backPointer = backPointer - 1;
+        size -= 1;
+        maintainUsageFactor();
+
+        return lastItem;
+    }
 }
