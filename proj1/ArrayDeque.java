@@ -150,5 +150,14 @@ public class ArrayDeque<genericType>
         maintainUsageFactor();
 
         return lastItem;
-    } 
+    }
+
+    public void printDeque()
+    {
+        // Prints the items in the Deque from first to last, separated by a space.
+        for (int i = 0; i < size; i++)
+        {
+            System.out.print(get(i) + " ");
+        }
+    }
 }
