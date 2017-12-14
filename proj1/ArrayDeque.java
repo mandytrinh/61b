@@ -150,5 +150,5 @@ public class ArrayDeque<genericType>
         maintainUsageFactor();
 
         return lastItem;
-    }
+    } 
 }
