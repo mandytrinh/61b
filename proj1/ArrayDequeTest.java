@@ -69,7 +69,7 @@ public class ArrayDequeTest
 	{
 		System.out.println("Now running add, remove test.");
 		
-		ArrayDeque<String> ad = new ArrayDeque<String>;
+		ArrayDeque<Integer> ad = new ArrayDeque<Integer>;
 		//first time, should be empty
 		boolean passed = checkEmpty(true, ad.isEmpty());
 		
