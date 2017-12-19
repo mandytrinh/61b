@@ -42,7 +42,6 @@ public class ArrayDequeTest
 	}
 	
 	// checks add by adding a few things to the list, checking isEmpty() & size() are correct, prints the result
-	
 	public static void addIsEmptySizeTest()
 	{
 		System.out.println("Now running add, isEmpty, & size test.");
@@ -63,6 +62,27 @@ public class ArrayDequeTest
 		ad.printDeque();
 		
 		printTestStatus(passed);
+	}
+	
+	//Adds an item, then removes it, make sure array deque (ad) is empty afterwards
+	public static void addRemoveTest()
+	{
+		System.out.println("Now running add, remove test.");
+		
+		ArrayDeque<String> ad = new ArrayDeque<String>;
+		//first time, should be empty
+		boolean passed = checkEmpty(true, ad.isEmpty());
+		
+		ad.addFirst(10);
+		//adding something to the front; should NOT be empty
+		passed = checkEmpty(false, ad.isEmpty()) && passed;
+		
+		ad.removeFirst();
+		//removing that 10 we just added; should now be empty again
+		passed = checkEmpty(true, ad.isEmpty()) && passed;
+		
+		printTestStatus(passed);
+		
 	}
 	
 }
