@@ -7,7 +7,7 @@ public class ArrayDequeTest
 		addRemoveTest();
 		resizeTest;
 	}
-	
+	// prints a message on whether the test failed or passed
 	public static void printTestStatus(boolean passed)
 	{
 		if (passed)
@@ -41,5 +41,33 @@ public class ArrayDequeTest
 		return true;
 	}
 	
+	// checks add by adding a few things to the list, checking isEmpty() & size() are correct, prints the result
+	
+	public static void addIsEmptySizeTest()
+	{
+		System.out.println("Now running add, isEmpty, & size test.");
+		ArrayDeque<String> ad = new ArrayDeque<String>();
+		boolean passed = checkEmpty(true, ad.isEmpty());
+		
+		ad.addFirst("front");
+		passed = checkSize(1, ad.size()) && passed;
+		passed = checkEmpty(false, ad.isEmpty()) && passed;
+		
+		ad.addLast("middle");
+		passed = checkSize(2, ad.size()) && passed;
+		
+		ad.addLast("back");
+		passed = checkSize(3, ad.size()) && passed;
+		
+		System.out.println("Printing out array deque:");
+		ad.printDeque();
+		
+		printTestStatus(passed);
+	}
 	
 }
+
+
+
+
+
