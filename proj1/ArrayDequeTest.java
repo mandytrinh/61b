@@ -85,6 +85,46 @@ public class ArrayDequeTest
 		
 	}
 	
+	public static void resizeTest()
+	{
+		System.out.println("Now running resize test");
+		
+		ArrayDeque<Integer> ad = new ArrayDeque<Integer>;
+		//first time, should be empty with capacity as 8
+		boolean passed = checkEmpty(true, ad.isEmpty());
+		passed = checkSize(8, getCapacity()) && passed;
+	
+		// adds 1 to array deque until 10
+		for (int i =0; i < 10; i++)
+		{
+			ad.addLast(i);
+		}
+		
+		// now size should be 10 (original 0 + 10), and capacity should be 16 (original capacity * 2 for every new 8 items added)
+		passed = checkSize(10, ad.size()) && passed;
+		passed = checkSize(16, ad.getCapacity()) && passed;
+		
+		// adds 1 to array deque until 30
+		for (int i = 0; i < 30; i++)
+		{
+			ad.addLast(i);
+		}
+		
+		//now size should be 40 (10 + 30), and capacity should be 64 (16 doubled twice)
+		passed = checkSize(40, ad.size()) && passed;
+		passed = checkSize(64, ad.getCapacity()) && passed;
+		
+		// removes 25 from array deque; size should be 15, usage factor is now 15/64 = 0.23, so half the arraydeque
+		for (int i = 0; i < 25; i++)
+		{
+			ad.removeLast();
+		}
+		
+		passed = checkSize(15, ad.size()) && passed;
+		passed = checkSize(32, ad.getCapacity()) && passed;
+		
+		printTestStatus(passed);
+	}
 }
 
 
