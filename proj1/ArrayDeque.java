@@ -19,7 +19,7 @@ public class ArrayDeque<genericType>
         frontPointer = 0;
     }
 
-	private int getCapacity() { return capacity; }
+	public int getCapacity() { return capacity; }
 
 	private boolean arrayIsFull() { return size == capacity; }
 

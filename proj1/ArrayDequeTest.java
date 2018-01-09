@@ -5,7 +5,7 @@ public class ArrayDequeTest
 		System.out.println("Running tests.\n");
 		addIsEmptySizeTest();
 		addRemoveTest();
-		resizeTest;
+		resizeTest();
 	}
 	// prints a message on whether the test failed or passed
 	public static void printTestStatus(boolean passed)
@@ -69,7 +69,7 @@ public class ArrayDequeTest
 	{
 		System.out.println("Now running add, remove test.");
 		
-		ArrayDeque<Integer> ad = new ArrayDeque<Integer>;
+		ArrayDeque<Integer> ad = new ArrayDeque<Integer>();
 		//first time, should be empty
 		boolean passed = checkEmpty(true, ad.isEmpty());
 		
@@ -89,10 +89,10 @@ public class ArrayDequeTest
 	{
 		System.out.println("Now running resize test");
 		
-		ArrayDeque<Integer> ad = new ArrayDeque<Integer>;
+		ArrayDeque<Integer> ad = new ArrayDeque<Integer>();
 		//first time, should be empty with capacity as 8
 		boolean passed = checkEmpty(true, ad.isEmpty());
-		passed = checkSize(8, getCapacity()) && passed;
+		passed = checkSize(8, ad.getCapacity()) && passed;
 	
 		// adds 1 to array deque until 10
 		for (int i =0; i < 10; i++)
