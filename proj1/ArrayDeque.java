@@ -40,6 +40,26 @@ public class ArrayDeque<genericType>
 		}
 	}
 
+	private int addOne(int currentIndex)
+    {
+        int nextIndex = currentIndex + 1;
+        if (nextIndex == capacity)
+        {
+            nextIndex = nextIndex % capacity;
+        }
+        return nextIndex;
+    }
+
+    private int minusOne(int currentIndex)
+    {
+        int nextIndex = currentIndex - 1;
+        if (nextIndex < 0)
+        {
+            nextIndex = nextIndex + capacity;
+        }
+        return nextIndex;
+    }
+
 	private void resizeDown(int newCapacity)
     {
         genericType[] newArray = (genericType[]) new Object[newCapacity];
@@ -54,7 +74,7 @@ public class ArrayDeque<genericType>
     private void resizeUp(int newCapacity)
     {
         genericType[] newArray = (genericType[]) new Object[newCapacity];
-        int startIndex = frontPointer + 1;
+        int startIndex = addOne(frontPointer);
         int firstLength = size - startIndex; //from 1 to end
 
         System.arraycopy(items, startIndex, newArray, 1, firstLength);
@@ -76,7 +96,7 @@ public class ArrayDeque<genericType>
             resizeUp(newCapacity);
         }
         items[frontPointer] = x;
-        frontPointer = frontPointer - 1;
+        frontPointer = minusOne(frontPointer);
         size += 1;
     }
 
@@ -88,7 +108,7 @@ public class ArrayDeque<genericType>
             resizeUp(newCapacity);
         }
         items[backPointer] = x;
-        backPointer = backPointer + 1;
+        backPointer = addOne(backPointer);
         size += 1;
 
     }
