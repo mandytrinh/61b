@@ -1,4 +1,6 @@
+import edu.princeton.cs.algs4.StdRandom;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 /** Demos the version of assertEquals with a String message. */
