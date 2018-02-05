@@ -1,5 +1,15 @@
-import java.io.PrintStream;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import jh61b.grader.GradedTest;
+import org.junit.runner.RunWith;
+import org.junit.runner.JUnitCore;
+
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.Objects;
+
+import java.io.PrintStream;
+import java.io.ByteArrayOutputStream;
 
 public class GenerateFailureSequenceCheckerAD {
 
@@ -11,12 +21,12 @@ public class GenerateFailureSequenceCheckerAD {
         PrintStream oldStream = System.out;
 
         /* From http://stackoverflow.com/questions/8708342/redirect-console-output-to-string-in-java */
-       
+
         /*ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream captured = new PrintStream(baos);
         System.setOut(captured);
         System.out.flush();
-        
+
         jh61b.junit.TestRunner.runTests(TestArrayDeque1B.class);
         String referenceOutput = baos.toString();
         System.setOut(oldStream);
@@ -55,4 +65,4 @@ public class GenerateFailureSequenceCheckerAD {
         */
 
     }
-} 
+}
