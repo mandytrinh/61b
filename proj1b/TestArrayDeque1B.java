@@ -16,5 +16,16 @@ public class TestArrayDeque1B
             DequeOperation do1 = new DequeOperation("addFirst", i);
             fs.addOperation(do1);
         }
+        assertEquals(15, sad1.size());
+
+        for (int y = 0; y < 17; y++)
+        {
+            sad1.removeFirst();
+            DequeOperation do2 = new DequeOperation("removeFirst", y);
+            fs.addOperation(do2);
+        }
+        assertEquals(0, sad1.size());
+        assertTrue(sad1.isEmpty());
+
     }
 }
