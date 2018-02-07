@@ -3,6 +3,43 @@ import org.junit.Test;
 
 public class TestArrayDeque1B
 {
+
+    @Test
+    public void addRemoveTestFirst()
+    {
+        StudentArrayDeque<Integer> sad1 = new StudentArrayDeque<Integer>();
+        for (int i = 0; i < 4; i++)
+        {
+            sad1.addFirst(i);
+        }
+        for (int k = 0; k < 2; k++)
+        {
+            sad1.removeFirst();
+        }
+        int first = sad1.removeFirst();
+        assertEquals(1, first);
+        int last = sad1.removeLast();
+        assertEquals(0, last);
+    }
+
+    @Test
+    public void addRemoveLastTest()
+    {
+        StudentArrayDeque<Integer> sad1 = new StudentArrayDeque<Integer>();
+        for (int i = 0; i < 4; i++)
+        {
+            sad1.addLast(i);
+        }
+        for (int j = 0; j < 2; j++)
+        {
+            sad1.removeLast();
+        }
+        int first = sad1.removeFirst();
+        assertEquals(0, first);
+        int last = sad1.removeLast();
+        assertEquals(1, last);
+    }
+
     @Test
     public void sizeTest()
     {
@@ -24,8 +61,11 @@ public class TestArrayDeque1B
             DequeOperation do2 = new DequeOperation("removeFirst", y);
             fs.addOperation(do2);
         }
-        assertEquals(0, sad1.size());
+        assertEquals(0, sad1.size()); //Error here, can go into negatives
         assertTrue(sad1.isEmpty());
 
+    }
+    public static void main(String... args) {
+        jh61b.junit.TestRunner.runTests("all", TestArrayDeque1B.class);
     }
 }
