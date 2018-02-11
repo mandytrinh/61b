@@ -51,5 +51,8 @@ public class TestLinkedListDeque1B
         assertEquals(fs.toString(), null, itemOutsideIndex); //fails here, item out of bound, should return null but gives a number
     }
 
+    public static void main(String[] args) {
+        jh61b.junit.TestRunner.runTests(TestLinkedListDeque1B.class);
+    }
 
 }

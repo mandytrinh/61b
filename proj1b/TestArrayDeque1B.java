@@ -67,7 +67,7 @@ public class TestArrayDeque1B
         //sad1.printDeque();
         int expected = 0;
         int actual = sad1.size();
-        assertEquals("Expected " + expected + " but got " + actual, expected, actual); //Error here, can go into negatives
+        assertEquals(fs.toString(), expected, actual); //Error here, can go into negatives
         assertTrue(sad1.isEmpty());
 
     }
