@@ -4,6 +4,7 @@ public class Palindrome
     {
         /* builds a Deque where the characters in the deque
         appear in the same order as in the word.*/
+
         Deque<Character> characterDeque = new LinkedListDequeSolution<Character>();
         for (int i = 0; i < word.length(); i++)
         {
@@ -15,6 +16,8 @@ public class Palindrome
     }
     private static boolean isPalindromeRecursiveHelper (Deque<Character> word)
     {
+        //helper method for isPalindrome below
+
         if (word.size() == 0 || word.size() == 1)
         {
             return true;
@@ -32,6 +35,8 @@ public class Palindrome
     }
     public static boolean isPalindrome(String word)
     {
+        // should return true if the given word is a palindrome, and false otherwise
+        word = word.toUpperCase(); //to eliminate case sensitivity
         Deque<Character> characterDeque = wordToDeque(word);
         return isPalindromeRecursiveHelper(characterDeque);
     }
