@@ -40,4 +40,29 @@ public class Palindrome
         Deque<Character> characterDeque = wordToDeque(word);
         return isPalindromeRecursiveHelper(characterDeque);
     }
+
+    private static boolean isPalindromeRecursiveHelper(Deque<Character> word, CharacterComparator cc)
+    {
+        if (word.size() == 0 || word.size() == 1)
+        {
+            return true;
+        }
+        else
+        {
+            char characFromFirst = word.removeFirst();
+            char characFromLast = word.removeLast();
+            if (cc.equalChars(characFromFirst, characFromLast))
+            {
+                isPalindromeRecursiveHelper(word, cc);
+            }
+        }
+        return false;
+    }
+
+    public static boolean isPalindrome(String word, CharacterComparator cc)
+    {
+        word = word.toUpperCase();
+        Deque<Character> characterDeque = wordToDeque(word);
+        return isPalindromeRecursiveHelper(characterDeque, cc);
+    }
 }
