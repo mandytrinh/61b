@@ -11,6 +11,13 @@ public class TestOffByOne
     }
 
     @Test
+    public void positiveOneOffOtherWayTest()
+    {
+        OffByOne obo1 = new OffByOne();
+        assertTrue(obo1.equalChars('u', 't'));
+    }
+
+    @Test
     public void negativeOneOffTest()
     {
         OffByOne obo2 = new OffByOne();
