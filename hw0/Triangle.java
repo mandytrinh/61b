@@ -1,3 +1,4 @@
+/*
 public class Triangle 
 { public static void main(String[] args) 
   { int size = 5;
@@ -14,4 +15,21 @@ public class Triangle
       row = row + 1;
     }
   }   
+}
+*/
+
+public class Triangle
+{
+    public static void main (String[] args)
+    {
+        int counter = 0;
+        String triangle = "*";
+        while (counter < 5)
+        {
+            System.out.print(triangle);
+            System.out.println();
+            triangle += '*';
+            counter +=1;
+        }
+    }
 }
