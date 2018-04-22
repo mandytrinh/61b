@@ -1,16 +1,16 @@
 // TODO: Make sure to make this class a part of the synthesizer package
-// package <package name>;
+package synthesizer;
 import java.util.Iterator;
 
 //TODO: Make sure to make this class and all of its methods public
 //TODO: Make sure to make this class extend AbstractBoundedQueue<t>
-public class ArrayRingBuffer<T>  {
+public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T>  {
     /* Index for the next dequeue or peek. */
-    private int first;            // index for the next dequeue or peek
+    public int first;            // index for the next dequeue or peek
     /* Index for the next enqueue. */
-    private int last;
+    public int last;
     /* Array for storing the buffer data. */
-    private T[] rb;
+    public T[] rb;
 
     /**
      * Create a new ArrayRingBuffer with the given capacity.
@@ -21,15 +21,28 @@ public class ArrayRingBuffer<T>  {
         //       this.capacity should be set appropriately. Note that the local variable
         //       here shadows the field we inherit from AbstractBoundedQueue, so
         //       you'll need to use this.capacity to set the capacity.
+        this.rb = (T[]) new Object[capacity];
+        this.first = 0; this.last = 0; this.fillCount = 0;
+        this.capacity = capacity;
     }
 
     /**
      * Adds x to the end of the ring buffer. If there is no room, then
-     * throw new RuntimeException("Ring buffer overflow"). Exceptions
-     * covered Monday.
+     * throw new RuntimeException("Ring buffer overflow").
      */
     public void enqueue(T x) {
         // TODO: Enqueue the item. Don't forget to increase fillCount and update last.
+        if (capacity == fillCount)
+        {
+            throw new RuntimeException("Ring buffer overflow");
+        }
+        rb[last] = x;
+        this.last += 1;
+        if (this.last == capacity)
+        {
+            this.last = 0;
+        }
+        this.fillCount += 1;
     }
 
     /**
