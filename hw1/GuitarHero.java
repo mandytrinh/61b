@@ -15,12 +15,14 @@ public class GuitarHero {
         synthesizer.GuitarString[] guitarStringObjects = new GuitarString[37];
         synthesizer.GuitarString stringX;
         synthesizer.GuitarString stringToPlay;
+
         for (int i = 0; i < 37; i++)
         {
             double freq = 440.0 * Math.pow(2.0, (i - 24.0) / 12.0);
             stringX = new synthesizer.GuitarString(freq);
             guitarStringObjects[i] = stringX;
         }
+
         while (true)
         {
             /* check if the user has typed a key; if so, get the index,
@@ -33,12 +35,14 @@ public class GuitarHero {
                 stringToPlay = guitarStringObjects[indexOfInputKey];
                 stringToPlay.pluck();
             }
+
             // compute the superposition of samples
             double sample = 0.0;
             for (GuitarString x : guitarStringObjects)
             {
                 sample += x.sample();
             }
+            
             // play the sample on standard audio
             StdAudio.play(sample);
 
