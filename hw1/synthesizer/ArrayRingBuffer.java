@@ -14,9 +14,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T>  {
     public ArrayRingBuffer(int capacity) {
         /* Create new array with capacity elements.
                first, last, and fillCount should all be set to 0.
-               this.capacity should be set appropriately. Note that the local variable
-              here shadows the field we inherit from AbstractBoundedQueue, so
-               you'll need to use this.capacity to set the capacity. */
+               this.capacity should be set appropriately. */
         this.rb = (T[]) new Object[capacity];
         this.first = 0; this.last = 0; this.fillCount = 0;
         this.capacity = capacity;
@@ -41,10 +39,8 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T>  {
         this.fillCount += 1;
     }
 
-
      /* Dequeue oldest item in the ring buffer. If the buffer is EMPTY, then
-     * throw new RuntimeException("Ring buffer underflow"). Exceptions
-     * covered Monday.*/
+     * throw new RuntimeException("Ring buffer underflow").*/
 
     public T dequeue() {
         // Returns the first (OLDEST) added item & decrease fillCount and update
@@ -64,7 +60,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T>  {
 
     /* Return oldest item, but don't remove it.*/
     public T peek() {
-        // TODO: Return the first item. None of your instance variables should change.
+        // Return the first item. No instance variables should change.
         if (isEmpty())
         {
             throw new RuntimeException("Ring buffer underflow");
