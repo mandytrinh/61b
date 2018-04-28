@@ -42,7 +42,7 @@ public class GuitarHero {
             {
                 sample += x.sample();
             }
-            
+
             // play the sample on standard audio
             StdAudio.play(sample);
 
