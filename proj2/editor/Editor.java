@@ -11,6 +11,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
 import java.util.LinkedList;
 
 
@@ -19,7 +20,9 @@ public class Editor extends Application {
     private static final int WINDOW_WIDTH = 500;
     private static final int WINDOW_HEIGHT = 500;
 
-    /** An EventHandler to handle keys that get pressed. */
+    /**
+     * An EventHandler to handle keys that get pressed.
+     */
     private class KeyEventHandler implements EventHandler<KeyEvent> {
         int textCenterX;
         int textCenterY;
@@ -28,15 +31,17 @@ public class Editor extends Application {
         private static final int STARTING_TEXT_POSITION_X = 250;
         private static final int STARTING_TEXT_POSITION_Y = 250;
 
-        /** The Text to display on the screen. */
+        /**
+         * The Text to display on the screen.
+         */
         private Text displayText = new Text(STARTING_TEXT_POSITION_X, STARTING_TEXT_POSITION_Y, "");
         private int fontSize = STARTING_FONT_SIZE;
 
         private String fontName = "Verdana";
 
         KeyEventHandler(final Group root, int windowWidth, int windowHeight) {
-            textCenterX = windowWidth / 2;
-            textCenterY = windowHeight / 2;
+            textCenterX = 5;
+            textCenterY = 5;
 
             // Initialize some empty text and add it to root so that it will be displayed.
             displayText = new Text(textCenterX, textCenterY, "");
@@ -68,7 +73,7 @@ public class Editor extends Application {
                     keyEvent.consume();
                 }
 
-                centerText();
+                //centerText();
             } else if (keyEvent.getEventType() == KeyEvent.KEY_PRESSED) {
                 // Arrow keys should be processed using the KEY_PRESSED event, because KEY_PRESSED
                 // events have a code that we can check (KEY_TYPED events don't have an associated
@@ -77,11 +82,11 @@ public class Editor extends Application {
                 if (code == KeyCode.UP) {
                     fontSize += 5;
                     displayText.setFont(Font.font(fontName, fontSize));
-                    centerText();
+                    //centerText();
                 } else if (code == KeyCode.DOWN) {
                     fontSize = Math.max(0, fontSize - 5);
                     displayText.setFont(Font.font(fontName, fontSize));
-                    centerText();
+                    //centerText();
                 }
             }
         }
@@ -121,7 +126,7 @@ public class Editor extends Application {
         scene.setOnKeyTyped(keyEventHandler);
         scene.setOnKeyPressed(keyEventHandler);
 
-        primaryStage.setTitle("Single Letter Display Simple");
+        primaryStage.setTitle("Simple Editor");
 
         // This is boilerplate, necessary to setup the window where things are displayed.
         primaryStage.setScene(scene);
