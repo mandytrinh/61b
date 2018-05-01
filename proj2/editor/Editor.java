@@ -64,15 +64,22 @@ public class Editor extends Application {
                 // the KEY_TYPED event, javafx handles the "Shift" key and associated
                 // capitalization.
                 String characterTyped = keyEvent.getCharacter();
-                input.add(characterTyped);
                 if (characterTyped.length() > 0 && characterTyped.charAt(0) != 8) {
                     // Ignore control keys, which have non-zero length, as well as the backspace
                     // key, which is represented as a character of value = 8 on Windows.
+                    input.add(characterTyped);
                     String joinedText = String.join("", input);
                     displayText.setText(joinedText);
                     keyEvent.consume();
                 }
-                
+                else if (characterTyped.length() > 0 && characterTyped.charAt(0) == 8)
+                {
+                    input.removeLast();
+                    String joinedText = String.join("", input);
+                    displayText.setText(joinedText);
+                }
+
+
             } else if (keyEvent.getEventType() == KeyEvent.KEY_PRESSED) {
                 // Arrow keys should be processed using the KEY_PRESSED event, because KEY_PRESSED
                 // events have a code that we can check (KEY_TYPED events don't have an associated
