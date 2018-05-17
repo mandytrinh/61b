@@ -42,7 +42,10 @@ public class Plip extends Creature {
      *  that you get this exactly correct.
      */
     public Color color() {
-        g = 63;
+        r = 99;
+        b = 76;
+        g = (int)(((96 ) * energy) + 63);
+        //green @ max value (255) - green @ min value (63) / max value (2)
         return color(r, g, b);
     }
 
