@@ -19,6 +19,7 @@ public class Plip extends Creature {
     private int g;
     /** blue color. */
     private int b;
+    private int maxEnergy = 2;
 
     /** creates plip with energy equal to E. */
     public Plip(double e) {
@@ -51,18 +52,27 @@ public class Plip extends Creature {
 
     /** Do nothing with C, Plips are pacifists. */
     public void attack(Creature c) {
+        return;
     }
 
     /** Plips should lose 0.15 units of energy when moving. If you want to
      *  to avoid the magic number warning, you'll need to make a
      *  private static final variable. This is not required for this lab.
      */
-    public void move() {
+    public void move()
+    {
+        energy = energy - 0.15;
     }
 
 
     /** Plips gain 0.2 energy when staying due to photosynthesis. */
-    public void stay() {
+    public void stay()
+    {
+        energy = energy + 0.2;
+        if (energy > maxEnergy)
+        {
+            energy = maxEnergy;
+        }
     }
 
     /** Plips and their offspring each get 50% of the energy, with none
