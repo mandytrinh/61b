@@ -43,21 +43,20 @@ public class TestPlip {
         assertEquals(1, originalPlip.energy(), 0.01);
     }
 
-    //@Test
+    @Test
     public void testChoose() {
-        Plip p = new Plip(1.2);
+        Plip p = new Plip(1.2); // hashmap is a map, like a dictionary
         HashMap<Direction, Occupant> surrounded = new HashMap<Direction, Occupant>();
-        surrounded.put(Direction.TOP, new Impassible());
+        surrounded.put(Direction.TOP, new Empty());
         surrounded.put(Direction.BOTTOM, new Impassible());
         surrounded.put(Direction.LEFT, new Impassible());
         surrounded.put(Direction.RIGHT, new Impassible());
 
         //You can create new empties with new Empty();
         //Despite what the spec says, you cannot test for Cloruses nearby yet.
-        //Sorry!  
 
         Action actual = p.chooseAction(surrounded);
-        Action expected = new Action(Action.ActionType.STAY);
+        Action expected = new Action(Action.ActionType.REPLICATE,Direction.TOP);
 
         assertEquals(expected, actual);
     }

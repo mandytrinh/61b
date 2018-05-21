@@ -79,8 +79,11 @@ public class Plip extends Creature {
      *  lost to the process. Now that's efficiency! Returns a baby
      *  Plip.
      */
-    public Plip replicate() {
-        return this;
+    public Plip replicate()
+    {
+        energy = 0.5 * energy;
+        Plip babyPlip = new Plip(energy);
+        return babyPlip;
     }
 
     /** Plips take exactly the following actions based on NEIGHBORS:
@@ -93,7 +96,20 @@ public class Plip extends Creature {
      *  scoop on how Actions work. See SampleCreature.chooseAction()
      *  for an example to follow.
      */
-    public Action chooseAction(Map<Direction, Occupant> neighbors) {
+    public Action chooseAction(Map<Direction, Occupant> neighbors)
+    {
+        Plip p = new Plip(energy);
+        List<Direction> emptySpots = getNeighborsOfType(neighbors, "empty");
+        if (emptySpots.size() == 0)
+        {
+            return new Action(Action.ActionType.STAY);
+        }
+        if (emptySpots.size() == 1) {
+            if (energy > 1.0) {
+                Direction moveDir = emptySpots.get(0);
+                return new Action(Action.ActionType.REPLICATE, moveDir);
+            }
+        }
         return new Action(Action.ActionType.STAY);
     }
 
