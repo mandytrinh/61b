@@ -9,15 +9,9 @@ import huglife.Occupant;
 import huglife.Impassible;
 import huglife.Empty;
 
-/** Tests the plip class   
- *  @authr FIXME
- */
-
 public class TestPlip {
 
-    /* Replace with the magic word given in lab.
-     * If you are submitting early, just put in "early" */
-    public static final String MAGIC_WORD = "";
+    //public static final String MAGIC_WORD = "";
 
     @Test
     public void testBasics() {
