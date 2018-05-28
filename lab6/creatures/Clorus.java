@@ -55,11 +55,13 @@ public class Clorus extends Creature
     {
         energy = energy - 0.01;
     }
+
     @Override
     public void move()
     {
         energy = energy - 0.03;
     }
+
     @Override
     public Action chooseAction(Map<Direction, Occupant> neighbors)
     {
@@ -73,16 +75,15 @@ public class Clorus extends Creature
         else if (plips.size() > 0)
         {
             Direction attackDir = HugLifeUtils.randomEntry(plips);
-            return new Action(Action.ActionType.ATTACK);
+            return new Action(Action.ActionType.ATTACK, attackDir);
         }
         else if (emptySpots.size() > 0)
         {
             if (energy >= 1)
             {
                 Direction replicateDir = HugLifeUtils.randomEntry(emptySpots);
-                return new Action(Action.ActionType.REPLICATE);
+                return new Action(Action.ActionType.REPLICATE, replicateDir);
             }
-            return new Action(Action.ActionType.MOVE);
         }
         return new Action(Action.ActionType.STAY);
     }
